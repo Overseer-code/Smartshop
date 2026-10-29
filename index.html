@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartShop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-10 bg-white shadow">
+    <div class="max-w-6xl mx-auto p-4 flex flex-wrap items-center justify-between gap-3">
+      <a href="#home" class="text-2xl font-bold text-blue-600">SmartShop</a>
+
+      <nav class="flex gap-5">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#cart" class="nav-link">Cart (<span id="cart-count">0</span>)</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <span>Balance: <b id="balance"></b></span>
+        <button id="add-money" class="bg-blue-600 text-white px-3 py-1 rounded">Add Money</button>
+      </div>
+    </div>
+    <p id="warning" class="hidden bg-red-100 text-red-700 text-center p-2">
+      Warning: total price is more than your balance. Add money first.
+    </p>
+  </header>
+
+  <!-- Banner -->
+  <section id="home" class="scroll-mt-20 relative h-64 md:h-96 bg-gray-800 overflow-hidden">
+    <img class="banner-img w-full h-full object-contain" src="images/banner1.webp" alt="Banner 1">
+    <img class="banner-img hidden w-full h-full object-contain" src="images/banner2.jpg" alt="Banner 2">
+    <img class="banner-img hidden w-full h-full object-contain" src="images/banner3.jpg" alt="Banner 3">
+    <button id="banner-prev" class="absolute left-3 top-1/2 bg-gray-800 text-white w-10 h-10 rounded-full">&lt;</button>
+    <button id="banner-next" class="absolute right-3 top-1/2 bg-gray-800 text-white w-10 h-10 rounded-full">&gt;</button>
+  </section>
+
+  <!-- Products -->
+  <section id="products" class="scroll-mt-20 max-w-6xl mx-auto p-4 py-10">
+    <h2 class="text-3xl font-bold mb-4">Products</h2>
+    <input id="search" type="text" placeholder="Search by name or category"
+      class="w-full border border-gray-300 rounded p-2 mb-6">
+    <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+  </section>
+
+  <!-- Cart -->
+  <section id="cart" class="scroll-mt-20 max-w-6xl mx-auto p-4 py-10">
+    <h2 class="text-3xl font-bold mb-4">Your Cart</h2>
+    <div class="bg-white rounded shadow p-5">
+      <div id="cart-items"></div>
+
+      <div class="flex flex-wrap items-center gap-2 my-4">
+        <input id="coupon" type="text" placeholder="Coupon code" class="border border-gray-300 rounded p-2">
+        <button id="apply-coupon" class="bg-gray-800 text-white px-4 py-2 rounded">Apply</button>
+        <span id="coupon-msg"></span>
+      </div>
+
+      <div class="border-t pt-4">
+        <p class="flex justify-between py-1"><span>Subtotal</span> <span id="subtotal"></span></p>
+        <p class="flex justify-between py-1"><span>Delivery charge</span> <span id="delivery"></span></p>
+        <p class="flex justify-between py-1"><span>Shipping cost</span> <span id="shipping"></span></p>
+        <p class="flex justify-between py-1"><span>Discount</span> <span id="discount"></span></p>
+        <p class="flex justify-between py-2 text-xl font-bold border-t mt-2"><span>Total</span> <span id="total"></span></p>
+      </div>
+      <button id="checkout" class="w-full bg-blue-600 text-white py-2 rounded mt-4">Checkout</button>    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="scroll-mt-20 bg-white py-10">
+    <div class="max-w-3xl mx-auto p-4">
+      <h2 class="text-3xl font-bold mb-4">Customer Reviews</h2>
+      <div class="flex items-center gap-3">
+        <button id="review-prev" class="border border-gray-300 w-10 h-10 rounded-full">&lt;</button>
+        <div id="review" class="flex-1 border border-gray-300 rounded p-6 text-center"></div>
+        <button id="review-next" class="border border-gray-300 w-10 h-10 rounded-full">&gt;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer / Contact -->
+  <footer id="contact" class="scroll-mt-20 bg-gray-800 text-gray-300">
+    <div class="max-w-6xl mx-auto p-6 grid sm:grid-cols-2 gap-6">
+      <div>
+        <h3 class="text-white font-bold mb-2">Contact</h3>
+        <p>Email: support@smartshop.com</p>
+        <p>Phone: +880 1700-000000</p>
+        <p>Address: Chattogram, Bangladesh</p>
+      </div>
+      <div>
+        <h3 class="text-white font-bold mb-2">Quick Links</h3>
+        <p><a href="#home">Home</a></p>
+        <p><a href="#products">Products</a></p>
+        <p><a href="#reviews">Reviews</a></p>
+      </div>
+    </div>
+    <p class="text-center border-t border-gray-600 pt-4 px-4">Developed by Abid Hasan, Raihan Uddin Marup and Mubarrat Azim</p>
+    <p class="text-center p-4">&copy; 2026 SmartShop. All rights reserved.</p>
+  </footer>
+
+  <button id="back-to-top" class="fixed bottom-5 right-5 bg-blue-600 text-white w-10 h-10 rounded-full">&uarr;</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
