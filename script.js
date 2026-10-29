@@ -17,7 +17,8 @@ let cart = [];
 let couponApplied = false;
 let balance = Number(localStorage.getItem('balance')) || 1000;
 
-// ----- navbar: highlight the section you are on -----
+//navbar(highlight_the_section)
+
 window.addEventListener('scroll', function () {
   let current = 'home';
   document.querySelectorAll('section[id], footer[id]').forEach(function (sec) {
