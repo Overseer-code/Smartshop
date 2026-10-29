@@ -1,4 +1,5 @@
-// ----- settings -----
+//settings
+
 const DELIVERY_CHARGE = 60;
 const SHIPPING_RATE = 0.02;      // 2% of subtotal
 const COUPON_CODE = 'SMART10';   // gives 10% off
@@ -9,7 +10,8 @@ function fix4(n) {
   return Number(n.toFixed(4));
 }
 
-// ----- data -----
+//data
+
 let products = [];
 let cart = [];
 let couponApplied = false;
@@ -28,7 +30,8 @@ window.addEventListener('scroll', function () {
   });
 });
 
-// ----- banner slider -----
+//banner_slider
+
 const bannerImgs = document.querySelectorAll('.banner-img');
 let bannerIndex = 0;
 
@@ -42,7 +45,8 @@ document.getElementById('banner-prev').onclick = function () { showBanner(banner
 document.getElementById('banner-next').onclick = function () { showBanner(bannerIndex + 1); };
 setInterval(function () { showBanner(bannerIndex + 1); }, 4000);
 
-// ----- products (Fetch API) -----
+//(Fetch_Api)
+
 fetch('https://fakestoreapi.com/products')
   .then(function (res) { return res.json(); })
   .then(function (data) {
@@ -68,7 +72,8 @@ function showProducts(list) {
   });
 }
 
-// search by name or category (the extra feature)
+//extra(search_by)
+
 document.getElementById('search').addEventListener('input', function (e) {
   const text = e.target.value.toLowerCase();
   const result = products.filter(function (p) {
@@ -77,7 +82,8 @@ document.getElementById('search').addEventListener('input', function (e) {
   showProducts(result);
 });
 
-// ----- cart -----
+//cart
+
 function getTotals() {
   let subtotal = 0;
   cart.forEach(function (item) { subtotal += item.price * item.qty; });
@@ -99,7 +105,8 @@ function addToCart(id) {
     cart.push(item);
   }
 
-  // not allowed to go over the balance: undo and warn
+  //waring_not-allowed
+
   if (getTotals().total > balance) {
     item.qty--;
     if (item.qty === 0) cart.splice(cart.indexOf(item), 1);
@@ -155,7 +162,8 @@ document.getElementById('apply-coupon').onclick = function () {
   showCart();
 };
 
-// ----- checkout -----
+//checkout
+
 document.getElementById('checkout').onclick = function () {
   if (cart.length === 0) {
     alert('Your cart is empty.');
@@ -172,7 +180,8 @@ document.getElementById('checkout').onclick = function () {
   alert('Order placed! ৳' + fix4(total) + ' was taken from your balance.');
 };
 
-// ----- balance -----
+//balance
+
 function showBalance() {
   document.getElementById('balance').textContent = '৳' + fix4(balance);
   localStorage.setItem('balance', balance);
@@ -188,7 +197,8 @@ document.getElementById('add-money').onclick = function () {
   showBalance();
 };
 
-// ----- reviews (local JSON file) -----
+//reviews
+
 let reviews = [];
 let reviewIndex = 0;
 
@@ -217,11 +227,13 @@ function showReview(i) {
 document.getElementById('review-prev').onclick = function () { showReview(reviewIndex - 1); };
 document.getElementById('review-next').onclick = function () { showReview(reviewIndex + 1); };
 
-// ----- back to top -----
+//back-to-top
+
 document.getElementById('back-to-top').onclick = function () {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-// ----- start -----
+//start
+
 showBalance();
 showCart();
